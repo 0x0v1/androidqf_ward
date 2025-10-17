@@ -1,4 +1,4 @@
-module github.com/mvt-project/androidqf
+module github.com/mvt-project/androidqf_ward
 
 go 1.23.0
 
