@@ -6,9 +6,9 @@ package modules
 
 import (
 	"github.com/botherder/go-savetime/slice"
-	"github.com/mvt-project/androidqf/acquisition"
-	"github.com/mvt-project/androidqf/adb"
-	"github.com/mvt-project/androidqf/log"
+	"github.com/mvt-project/androidqf_ward/acquisition"
+	"github.com/mvt-project/androidqf_ward/adb"
+	"github.com/mvt-project/androidqf_ward/log"
 )
 
 type Files struct {

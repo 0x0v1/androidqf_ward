@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	saveSlice "github.com/botherder/go-savetime/slice"
-	"github.com/mvt-project/androidqf/log"
+	"github.com/mvt-project/androidqf_ward/log"
 )
 
 type ADB struct {

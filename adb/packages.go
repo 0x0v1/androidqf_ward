@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/avast/apkverifier"
-	"github.com/mvt-project/androidqf/log"
+	"github.com/mvt-project/androidqf_ward/log"
 )
 
 type PackageFile struct {

@@ -10,14 +10,14 @@ import (
 	"path/filepath"
 
 	saveRuntime "github.com/botherder/go-savetime/runtime"
-	"github.com/mvt-project/androidqf/assets"
 )
 
 func (a *ADB) findExe() error {
-	err := assets.DeployAssets()
-	if err != nil {
-		return err
-	}
+	// Skip asset deployment and use system adb
+	// err := assets.DeployAssets()
+	// if err != nil {
+	// 	return err
+	// }
 
 	adbPath, err := exec.LookPath("adb")
 	if err == nil {

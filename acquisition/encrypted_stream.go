@@ -17,7 +17,7 @@ import (
 
 	"filippo.io/age"
 	saveRuntime "github.com/botherder/go-savetime/runtime"
-	"github.com/mvt-project/androidqf/log"
+	"github.com/mvt-project/androidqf_ward/log"
 )
 
 // EncryptedZipWriter provides streaming encrypted zip functionality

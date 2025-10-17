@@ -6,60 +6,34 @@
 package assets
 
 import (
-	"embed"
 	"errors"
-	"os"
-	"path/filepath"
-
-	saveRuntime "github.com/botherder/go-savetime/runtime"
 )
 
-//go:embed collector_*
-var Collector embed.FS
+// CollectorFS is a stub for the collector filesystem
+// We don't bundle collector binaries - users should rely on system adb commands
+type CollectorFS struct{}
+
+// ReadFile returns an error since we don't bundle collector binaries
+func (c CollectorFS) ReadFile(name string) ([]byte, error) {
+	return nil, errors.New("collector binaries not bundled - please use system adb commands")
+}
+
+// Collector is a stub instance since we don't bundle collector binaries
+var Collector = CollectorFS{}
 
 type Asset struct {
 	Name string
 	Data []byte
 }
 
-// DeployAssets is used to retrieve the embedded adb binaries and store them.
+// DeployAssets is a no-op since we rely on system adb instead of embedded binaries
 func DeployAssets() error {
-	cwd := saveRuntime.GetExecutableDirectory()
-
-	for _, asset := range getAssets() {
-		assetPath := filepath.Join(cwd, asset.Name)
-
-		assetFile, err := os.OpenFile(assetPath, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0o755)
-		if err != nil {
-			// Asset file already exists. Do not try overwriting
-			if errors.Is(err, os.ErrExist) {
-				continue
-			} else {
-				return err
-			}
-		}
-		defer assetFile.Close()
-
-		_, err = assetFile.Write(asset.Data)
-		if err != nil {
-			return err
-		}
-	}
-
+	// No-op: we use system adb instead of embedded binaries
 	return nil
 }
 
-// Remove assets from the local disk
+// CleanAssets is a no-op since we don't deploy any assets
 func CleanAssets() error {
-	cwd := saveRuntime.GetExecutableDirectory()
-
-	for _, asset := range getAssets() {
-		assetPath := filepath.Join(cwd, asset.Name)
-		err := os.Remove(assetPath)
-		if err != nil {
-			return err
-		}
-	}
-
+	// No-op: we don't deploy any assets
 	return nil
 }

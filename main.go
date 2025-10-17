@@ -12,11 +12,11 @@ import (
 	"time"
 
 	"github.com/i582/cfmt/cmd/cfmt"
-	"github.com/mvt-project/androidqf/acquisition"
-	"github.com/mvt-project/androidqf/adb"
-	"github.com/mvt-project/androidqf/log"
-	"github.com/mvt-project/androidqf/modules"
-	"github.com/mvt-project/androidqf/utils"
+	"github.com/mvt-project/androidqf_ward/acquisition"
+	"github.com/mvt-project/androidqf_ward/adb"
+	"github.com/mvt-project/androidqf_ward/log"
+	"github.com/mvt-project/androidqf_ward/modules"
+	"github.com/mvt-project/androidqf_ward/utils"
 )
 
 func init() {

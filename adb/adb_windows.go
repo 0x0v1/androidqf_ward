@@ -11,16 +11,15 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/mvt-project/androidqf/assets"
-	"github.com/mvt-project/androidqf/log"
+	"github.com/mvt-project/androidqf_ward/log"
 )
 
 func (a *ADB) findExe() error {
-	// TODO: only deploy assets when needed
-	err := assets.DeployAssets()
-	if err != nil {
-		return err
-	}
+	// Skip asset deployment and use system adb
+	// err := assets.DeployAssets()
+	// if err != nil {
+	// 	return err
+	// }
 
 	adbPath, err := exec.LookPath("adb.exe")
 	if err == nil {
