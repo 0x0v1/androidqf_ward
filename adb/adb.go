@@ -92,9 +92,6 @@ func (a *ADB) Devices() ([]string, error) {
 			log.Debug("Found new device: ", dev[0])
 		}
 	}
-	fmt.Printf("Parsed lines: %#v\n", lines)
-	fmt.Printf("Devices slice: %#v\n", devices)
-
 	return devices, nil
 }
 

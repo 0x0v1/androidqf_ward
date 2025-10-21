@@ -58,26 +58,14 @@ func (a *ADB) getPackageFiles(packageName string, fast bool) []PackageFile {
 		}
 
 		if !fast {
-			// Not sure if this is useful or not considering packages may
-			// be downloaded later on
-			md5Out, err := a.Shell("md5sum", packagePath)
-			if err == nil {
-				packageFile.MD5 = strings.SplitN(md5Out, " ", 2)[0]
-			}
-			sha1Out, err := a.Shell("sha1sum", packagePath)
-			if err == nil {
-				packageFile.SHA1 = strings.SplitN(sha1Out, " ", 2)[0]
-			}
+			// AndroidQF impliments md5sum, sha1sum, sha256sum and sha512sum hashing.
+			// Out of all overheads in the !fast option, this is the most problematic
+			// Since Sha256sum is the most common, we will only use that.
 			sha256Out, err := a.Shell("sha256sum", packagePath)
 			if err == nil {
 				packageFile.SHA256 = strings.SplitN(sha256Out, " ", 2)[0]
 			}
-			sha512Out, err := a.Shell("sha512sum", packagePath)
-			if err == nil {
-				packageFile.SHA512 = strings.SplitN(sha512Out, " ", 2)[0]
-			}
 		}
-
 		packageFiles = append(packageFiles, packageFile)
 	}
 
