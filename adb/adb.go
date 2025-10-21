@@ -31,9 +31,11 @@ func New() (*ADB, error) {
 			err)
 	}
 	log.Debugf("ADB found at path: %s", adb.ExePath)
+	//In MESH we don't want to kill the server, we assume there is one running
+	//Killing the server interferes with the adb pair functionality
 
-	log.Debug("Killing existing ADB server if running")
-	adb.KillServer()
+	// log.Debug("Killing existing ADB server if running")
+	// adb.KillServer()
 
 	// Confirm that we can call "adb devices" without errors
 	_, err = adb.Devices()
