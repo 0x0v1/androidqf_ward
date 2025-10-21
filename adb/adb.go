@@ -85,12 +85,15 @@ func (a *ADB) Devices() ([]string, error) {
 
 	lines := strings.Split(string(out), "\n")
 	for _, s := range lines[1:] {
-		dev := strings.Split(s, "\t")
+		fmt.Printf("Line: %q\n", s)
+		dev := strings.Fields(s)
 		if len(dev) == 2 {
 			devices = append(devices, strings.TrimSpace(dev[0]))
 			log.Debug("Found new device: ", dev[0])
 		}
 	}
+	fmt.Printf("Parsed lines: %#v\n", lines)
+	fmt.Printf("Devices slice: %#v\n", devices)
 
 	return devices, nil
 }
